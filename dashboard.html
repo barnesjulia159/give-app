@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard - GIVE</title>
+  <link rel="stylesheet" href="style/styles.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo"><img src="style/logo2.png" alt="GIVE logo"" class="logo-img" />
+        
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="dashboard.html" class="active">Dashboard</a>
+      </div>
+      <div class="auth-buttons">
+        <span class="user-name">Welcome, Julia 👋</span>
+        <a href="login.html" class="btn-secondary">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="dashboard-container">
+    <h1 class="dashboard-title">My Dashboard</h1>
+
+    <!-- Stats Row -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Upcoming Events</h3>
+        <h2>3</h2>
+        <p>This Month</p>
+      </div>
+      <div class="stat-card">
+        <h3>Total Hours</h3>
+        <h2>47</h2>
+        <p>Volunteer Hours</p>
+      </div>
+      <div class="stat-card">
+        <h3>Impact</h3>
+        <h2>12</h2>
+        <p>Opportunities Joined</p>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-content">
+      
+      <!-- Upcoming Bookings -->
+      <div class="dashboard-section">
+        <h2>Upcoming Opportunities</h2>
+        <div class="booking-card">
+          <div class="booking-info">
+            <span class="cause-badge">Education</span>
+            <h3>After-School Reading Tutor</h3>
+            <p>Wilmington Literacy Center • May 30, 2026 • 10:00 AM</p>
+          </div>
+          <button class="btn-primary btn-small">View Details</button>
+        </div>
+
+        <div class="booking-card">
+          <div class="booking-info">
+            <span class="cause-badge">Environment</span>
+            <h3>Beach Cleanup</h3>
+            <p>Coastal Conservation NC • June 1, 2026 • 8:00 AM</p>
+          </div>
+          <button class="btn-primary btn-small">View Details</button>
+        </div>
+      </div>
+
+      <!-- Recommended Opportunities -->
+      <div class="dashboard-section">
+        <h2>Recommended for You</h2>
+        <div class="opportunities-grid">
+          <div class="opportunity-card">
+            <span class="cause-badge">Community</span>
+            <h3>Food Drive Assistant</h3>
+            <p>Good Shepherd Food Bank</p>
+            <button class="btn-primary btn-small mt-4">Sign Up</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

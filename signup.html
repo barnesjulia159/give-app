@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - GIVE</title>
+  <link rel="stylesheet" href="style/styles.css">
+</head>
+<body class="login-body">
+
+  <div class="login-container">
+    <!-- Logo -->
+    <div class="text-center mb-8">
+      <h1 class="logo"><div class="logo"><img src="style/logo2.png" alt="GIVE logo"" class="logo-img" />
+        
+      </div></h1>
+      <p class="tagline">Volunteer for a Better Tomorrow</p>
+    </div>
+
+    <h2 class="text-center text-2xl font-semibold mb-6">Create Your Account</h2>
+
+    <!-- Role Selection -->
+    <div class="role-selector">
+      <button class="role-btn active" data-role="volunteer">Volunteer</button>
+      <button class="role-btn" data-role="nonprofit">Non-Profit</button>
+    </div>
+
+    <form id="signupForm">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="fullName" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="email" placeholder="you@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Create a strong password" required>
+      </div>
+
+      <!-- Conditional Organization Name Field -->
+      <div class="form-group" id="orgField" style="display: none;">
+        <label>Organization Name</label>
+        <input type="text" id="orgName" placeholder="Enter organization name" required>
+      </div>
+
+      <button type="submit" class="btn-primary w-full py-3 text-lg">
+        Create Account as <span id="selected-role">Volunteer</span>
+      </button>
+    </form>
+
+    <p class="text-center mt-6 text-gray-600">
+      Already have an account? 
+      <a href="login.html" class="text-teal-600 font-medium hover:underline">Log In</a>
+    </p>
+  </div>
+
+  <script>
+    // Role Selection Logic
+    const roleBtns = document.querySelectorAll('.role-btn');
+    const selectedRoleText = document.getElementById('selected-role');
+    const orgField = document.getElementById('orgField');
+
+    roleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        roleBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const role = btn.getAttribute('data-role');
+        selectedRoleText.textContent = btn.textContent;
+
+        // Show/hide organization name field
+        if (role === 'nonprofit') {
+          orgField.style.display = 'block';
+        } else {
+          orgField.style.display = 'none';
+        }
+      });
+    });
+
+    // Form Submission (Demo)
+    document.getElementById('signupForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Account created successfully! (This is a demo)');
+      window.location.href = 'login.html';
+    });
+  </script>
+
+</body>
+</html>

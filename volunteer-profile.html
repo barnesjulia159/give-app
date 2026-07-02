@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - GIVE</title>
+  <link rel="stylesheet" href="style/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+
+      <div class="logo"><img src="style/logo2.png" alt="GIVE logo"" class="logo-img" />
+        
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="volunteer-profile.html" class="active">My Profile</a>
+        <a href="messages.html">Messages</a>
+        <a href="login.html">Log Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="profile-page">
+    <div class="container">
+      <div class="profile-header">
+        <div class="profile-avatar">👩‍🎓</div>
+        <div>
+          <h1>Julia Thompson</h1>
+          <p>Wilmington, North Carolina • Member since May 2026</p>
+        </div>
+      </div>
+
+      <div class="profile-grid">
+        <!-- Left Sidebar -->
+        <div class="profile-sidebar">
+          <div class="stat-card">
+            <h3>Total Hours</h3>
+            <div class="stat-number">42</div>
+            <p class="text-teal-600 font-medium">This Year</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>Opportunities Completed</h3>
+            <div class="stat-number">7</div>
+          </div>
+
+          <div class="stat-card">
+            <h3>Impact Score</h3>
+            <div class="stat-number">285</div>
+          </div>
+        </div>
+
+        <!-- Main Profile Content -->
+        <div class="profile-main">
+          <!-- Personal Information -->
+          <div class="card">
+            <h2>Personal Information</h2>
+            <form id="profileForm">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" value="Julia Thompson" required>
+              </div>
+              <div class="form-group">
+                <label>Bio</label>
+                <textarea rows="3">Passionate about education and environmental causes. Always looking for ways to support my local community in Wilmington.</textarea>
+              </div>
+
+              <!-- New: Skills Section -->
+              <div class="form-group">
+                <label>My Skills</label>
+                <div class="skills-input">
+                  <input type="text" id="skillInput" placeholder="Add a skill (e.g., Teaching)">
+                  <button type="button" onclick="addSkill()">Add</button>
+                </div>
+                <div id="skillsList" class="skills-list">
+                  <!-- Dynamically populated -->
+                </div>
+              </div>
+
+              <!-- New: Availability Section -->
+              <div class="form-group">
+                <label>Availability</label>
+                <div class="availability-options">
+                  <label><input type="checkbox" checked> Weekdays Evenings</label>
+                  <label><input type="checkbox" checked> Weekends</label>
+                  <label><input type="checkbox"> Mornings</label>
+                  <label><input type="checkbox"> Full Days</label>
+                </div>
+              </div>
+
+              <!-- New: Travel Radius -->
+              <div class="form-group">
+                <label>Maximum Travel Radius</label>
+                <div class="radius-slider">
+                  <input type="range" id="radiusSlider" min="5" max="100" value="25" oninput="updateRadius(this.value)">
+                  <span id="radiusValue">25 miles</span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-primary">Save Profile</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sample initial skills
+    let skills = ["Teaching", "Event Setup", "Environmental Cleanup"];
+
+    function renderSkills() {
+      const container = document.getElementById('skillsList');
+      container.innerHTML = '';
+      skills.forEach((skill, index) => {
+        container.innerHTML += `
+          <span class="skill-tag">
+            ${skill}
+            <span class="remove-skill" onclick="removeSkill(${index})">×</span>
+          </span>
+        `;
+      });
+    }
+
+    function addSkill() {
+      const input = document.getElementById('skillInput');
+      const value = input.value.trim();
+      if (value && !skills.includes(value)) {
+        skills.push(value);
+        renderSkills();
+        input.value = '';
+      }
+    }
+
+    function removeSkill(index) {
+      skills.splice(index, 1);
+      renderSkills();
+    }
+
+    function updateRadius(value) {
+      document.getElementById('radiusValue').textContent = `${value} miles`;
+    }
+
+    // Form Submission
+    document.getElementById('profileForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("✅ Profile updated successfully!");
+    });
+
+    // Initialize
+    renderSkills();
+  </script>
+</body>
+</html>

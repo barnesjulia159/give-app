@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Opportunity - GIVE</title>
+  <link rel="stylesheet" href="style/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo"><img src="style/logo2.png" alt="GIVE logo"" class="logo-img" />
+        
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="nonprofit-profile.html">Dashboard</a>
+        <a href="create-opportunity.html" class="active">Create Opportunity</a>
+        <a href="login.html">Log Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="create-page">
+    <div class="container">
+      <h1>Create New Volunteering Opportunity</h1>
+      <p class="subtitle">Reach volunteers in the Wilmington area</p>
+
+      <form id="createForm" class="create-form">
+        <div class="form-grid">
+          <!-- Left Column -->
+          <div class="form-left">
+            <div class="form-group">
+              <label>Opportunity Title <span class="required">*</span></label>
+              <input type="text" placeholder="e.g., Monthly Beach Cleanup" required>
+            </div>
+
+            <div class="form-group">
+              <label>Description <span class="required">*</span></label>
+              <textarea rows="5" placeholder="Provide a clear and engaging description of the activity..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Cause Area <span class="required">*</span></label>
+              <select required>
+                <option value="">Select a cause</option>
+                <option value="environment">Environment & Cleanup</option>
+                <option value="education">Education & Literacy</option>
+                <option value="health">Health & Wellness</option>
+                <option value="community">Community Service</option>
+                <option value="food">Food Security</option>
+                <option value="animals">Animal Welfare</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Required Skills</label>
+              <input type="text" placeholder="Teaching, Photography, Heavy lifting, etc.">
+              <small>Separate multiple skills with commas</small>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="form-right">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Date <span class="required">*</span></label>
+                <input type="date" required>
+              </div>
+              <div class="form-group">
+                <label>Maximum Spots <span class="required">*</span></label>
+                <input type="number" value="20" min="1" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Start Time <span class="required">*</span></label>
+                <input type="time" required>
+              </div>
+              <div class="form-group">
+                <label>End Time <span class="required">*</span></label>
+                <input type="time" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Location <span class="required">*</span></label>
+              <input type="text" placeholder="e.g., Wrightsville Beach, NC" required>
+            </div>
+
+            <div class="form-group">
+              <label>Address</label>
+              <input type="text" placeholder="Full address (optional)">
+            </div>
+
+            <div class="form-group">
+              <label>Upload Cover Image</label>
+              <input type="file" accept="image/*" class="file-input">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-secondary">Save as Draft</button>
+          <button type="submit" class="btn-primary">Publish Opportunity</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('createForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const title = document.querySelector('input[placeholder*="Beach"]').value || "New Opportunity";
+      
+      if (confirm(`Publish "${title}"?`)) {
+        alert("✅ Opportunity successfully published!\n\nVolunteers can now see and sign up for this event.");
+        window.location.href = "nonprofit-dashboard.html";
+      }
+    });
+  </script>
+</body>
+</html>

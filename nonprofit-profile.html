@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organization Dashboard - GIVE</title>
+    <link rel="stylesheet" href="style/styles.css">
+    </head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo"><img src="style/logo2.png" alt="GIVE logo"" class="logo-img" />
+        
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="nonprofit-dashboard.html" class="active">Dashboard</a>
+        <a href="messages.html">Messages</a>
+        <a href="login.html">Log Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="profile-page">
+    <div class="container">
+      <div class="profile-header">
+        <div class="profile-avatar">
+          🏢
+        </div>
+        <div>
+          <h1>Wilmington Community Aid</h1>
+          <p>Non-Profit Organization • Wilmington, NC</p>
+        </div>
+      </div>
+
+      <div class="profile-grid">
+        <!-- Left Sidebar: Stats -->
+        <div class="profile-sidebar">
+          <div class="stat-card">
+            <h3>Total Volunteers</h3>
+            <div class="stat-number">87</div>
+            <p class="text-teal-600">This Year</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>Hours Contributed</h3>
+            <div class="stat-number">1,245</div>
+          </div>
+
+          <div class="stat-card">
+            <h3>Active Opportunities</h3>
+            <div class="stat-number">6</div>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="mb-4">Quick Actions</h3>
+            <a href="create-opportunity.html" class="btn-primary full-width mb-3">Create New Opportunity</a>
+            <a href="#" class="btn-secondary full-width">View All Reports</a>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="profile-main">
+          <!-- Organization Info -->
+          <div class="card">
+            <h2>Organization Information</h2>
+            <form id="orgProfileForm">
+              <div class="form-group">
+                <label>Organization Name</label>
+                <input type="text" value="Wilmington Community Aid" required>
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea rows="4">Dedicated to strengthening our local community through education, food security, and environmental initiatives.</textarea>
+              </div>
+              <div class="form-group">
+                <label>Website</label>
+                <input type="url" value="https://wilmingtoncommunityaid.org">
+              </div>
+              <button type="submit" class="btn-primary">Update Organization Profile</button>
+            </form>
+          </div>
+
+          <!-- Active Opportunities -->
+          <div class="card mt-8">
+            <div class="flex justify-between items-center mb-6">
+              <h2>Active Opportunities</h2>
+              <a href="#" class="text-teal-600 font-medium">View All →</a>
+            </div>
+            <div id="activeOpportunities" class="space-y-4">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const activeOpps = [
+      {
+        title: "Beach Cleanup Drive",
+        date: "May 28, 2026",
+        volunteers: 14,
+        spots: 25
+      },
+      {
+        title: "Food Pantry Support",
+        date: "May 30, 2026",
+        volunteers: 8,
+        spots: 15
+      },
+      {
+        title: "Youth Mentoring Program",
+        date: "June 3, 2026",
+        volunteers: 6,
+        spots: 12
+      }
+    ];
+
+    function renderActiveOpportunities() {
+      const container = document.getElementById('activeOpportunities');
+      container.innerHTML = '';
+
+      activeOpps.forEach(opp => {
+        container.innerHTML += `
+          <div class="opportunity-card">
+            <div class="flex justify-between">
+              <div>
+                <h3>${opp.title}</h3>
+                <p class="text-gray-600">${opp.date}</p>
+              </div>
+              <div class="text-right">
+                <span class="text-teal-600 font-semibold">${opp.volunteers}/${opp.spots}</span>
+                <p class="text-sm text-gray-500">volunteers</p>
+              </div>
+            </div>
+            <div class="flex gap-3 mt-4">
+              <button class="btn-primary small">Manage</button>
+              <button class="btn-secondary small">Edit</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // Form Submission
+    document.getElementById('orgProfileForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("✅ Organization profile updated successfully!");
+    });
+
+    // Initialize
+    renderActiveOpportunities();
+  </script>
+</body>
+</html>

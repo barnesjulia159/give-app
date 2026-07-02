@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages - GIVE</title>
+  <link rel="stylesheet" href="style/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo"><img src="style/logo2.png" alt="GIVE logo"" class="logo-img" />
+        
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="messages.html" class="active">Messages</a>
+        <a href="login.html">Log Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="messages-page">
+    <div class="container">
+      <h1>Messages</h1>
+
+      <div class="messages-layout">
+        <!-- Conversations List -->
+        <div class="conversations-list">
+          <div class="conversation-item active" onclick="openChat(1)">
+            <div class="conv-avatar">🏢</div>
+            <div class="conv-info">
+              <h4>Ocean Guardians</h4>
+              <p>Beach Cleanup Drive • May 28</p>
+              <span class="last-message">Thank you for signing up! We'll see you there.</span>
+            </div>
+            <div class="conv-time">2h</div>
+          </div>
+
+          <div class="conversation-item" onclick="openChat(2)">
+            <div class="conv-avatar">📚</div>
+            <div class="conv-info">
+              <h4>Bright Futures NC</h4>
+              <p>Literacy Tutoring</p>
+              <span class="last-message">Do you have any experience working with kids?</span>
+            </div>
+            <div class="conv-time">Yesterday</div>
+          </div>
+
+          <div class="conversation-item" onclick="openChat(3)">
+            <div class="conv-avatar">🌱</div>
+            <div class="conv-info">
+              <h4>Wilmington Green Initiative</h4>
+              <p>Community Garden</p>
+              <span class="last-message">Confirmed for June 8th</span>
+            </div>
+            <div class="conv-time">May 20</div>
+          </div>
+        </div>
+
+        <!-- Chat Window -->
+        <div class="chat-window">
+          <div class="chat-header">
+            <div class="chat-with">
+              <span class="chat-avatar">🏢</span>
+              <div>
+                <h4>Ocean Guardians</h4>
+                <p>Beach Cleanup Drive</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <!-- Messages populated by JS -->
+          </div>
+
+          <div class="chat-input-area">
+            <input type="text" id="messageInput" placeholder="Type your message..." onkeypress="if(event.key === 'Enter') sendMessage()">
+            <button onclick="sendMessage()" class="send-btn">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentChat = 1;
+
+    const sampleMessages = {
+      1: [
+        { from: "them", text: "Hi Julia! Thank you for signing up for the Beach Cleanup.", time: "10:32 AM" },
+        { from: "me", text: "I'm excited to help! What should I bring?", time: "10:45 AM" },
+        { from: "them", text: "Just wear comfortable clothes and sunscreen. We'll provide everything else.", time: "10:50 AM" }
+      ]
+    };
+
+    function openChat(chatId) {
+      currentChat = chatId;
+      document.querySelectorAll('.conversation-item').forEach(item => item.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      const chatContainer = document.getElementById('chatMessages');
+      chatContainer.innerHTML = '';
+
+      const messages = sampleMessages[chatId] || [];
+      messages.forEach(msg => {
+        const messageHTML = `
+          <div class="message ${msg.from === 'me' ? 'message-me' : 'message-them'}">
+            <p>${msg.text}</p>
+            <span class="message-time">${msg.time}</span>
+          </div>
+        `;
+        chatContainer.innerHTML += messageHTML;
+      });
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const text = input.value.trim();
+      
+      if (text === '') return;
+
+      const chatContainer = document.getElementById('chatMessages');
+      const now = new Date();
+      const time = now.getHours() + ":" + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
+
+      const messageHTML = `
+        <div class="message message-me">
+          <p>${text}</p>
+          <span class="message-time">${time}</span>
+        </div>
+      `;
+      chatContainer.innerHTML += messageHTML;
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      input.value = '';
+    }
+
+    // Initialize first chat
+    window.onload = () => openChat(1);
+  </script>
+</body>
+</html>

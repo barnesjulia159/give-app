@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opportunities - GIVE</title>
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="flex items-center gap-3">
+        <div class="logo"><img src="style/logo2.png" alt="GIVE logo"" class="logo-img" />
+        
+      </div>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="opportunities.html" class="nav-link active">Opportunities</a>
+        <a href="my-bookings.html" class="nav-link">My Bookings</a>
+        <a href="messages.html" class="nav-link">Messages</a>
+        <a href="profile.html" class="nav-link">Profile</a>
+        <div class="profile-circle">JD</div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-container">
+
+    <!-- Header -->
+    <div class="page-header">
+      <h1>Volunteering Opportunities</h1>
+      
+      <!-- Toggle Buttons -->
+      <div class="view-toggle">
+        <button id="listBtn" class="toggle-btn active">
+          <i class="fas fa-list"></i> List View
+        </button>
+        <button id="mapBtn" class="toggle-btn">
+          <i class="fas fa-map"></i> Map View
+        </button>
+      </div>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search opportunities by title, cause, or location..." class="search-input">
+      <button class="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="content-grid">
+
+      <!-- Filters Sidebar -->
+      <div class="filters-sidebar">
+        <h3>Filters</h3>
+        <div class="filter-group">
+          <label>Cause Area</label>
+          <select class="filter-select">
+            <option>All Causes</option>
+            <option>Environment</option>
+            <option>Education</option>
+            <option>Health</option>
+            <option>Community</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Date</label>
+          <input type="date" class="filter-select">
+        </div>
+        <div class="filter-group">
+          <label>Distance</label>
+          <select class="filter-select">
+            <option>Within 10 miles</option>
+            <option>Within 25 miles</option>
+            <option>Within 50 miles</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Opportunities Content -->
+      <div class="opportunities-content">
+
+        <!-- List View -->
+        <div id="listView" class="view-container">
+          <div class="opportunities-grid">
+            
+            <!-- Opportunity Card 1 -->
+            <div class="opportunity-card">
+              <div class="card-header">
+                <span class="category">Environment</span>
+                <span class="spots">18/30 spots</span>
+              </div>
+              <h3>Beach Cleanup Drive</h3>
+              <p class="org-name">Coastal Preservation Society</p>
+              <div class="card-info">
+                <span><i class="fas fa-calendar"></i> June 7, 2026</span>
+                <span><i class="fas fa-clock"></i> 8:00 AM</span>
+                <span><i class="fas fa-map-marker-alt"></i> Wrightsville Beach</span>
+              </div>
+              <button><a href="opportunity-detail.html" class="view-details-btn">View Details</a></button>
+            </div>
+
+            <!-- Opportunity Card 2 -->
+            <div class="opportunity-card">
+              <div class="card-header">
+                <span class="category">Education</span>
+                <span class="spots">Full</span>
+              </div>
+              <h3>After-School Tutoring Program</h3>
+              <p class="org-name">Wilmington Literacy Partners</p>
+              <div class="card-info">
+                <span><i class="fas fa-calendar"></i> Every Tuesday</span>
+                <span><i class="fas fa-clock"></i> 4:00 PM</span>
+                <span><i class="fas fa-map-marker-alt"></i> Downtown Library</span>
+              </div>
+              <button><a href="opportunity-detail.html" class="view-details-btn">View Details</a></button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Map View -->
+        <div id="mapView" class="view-container hidden">
+          <div class="map-placeholder">
+            <div class="map-inner">
+              📍 <strong>Interactive Map View</strong><br>
+              <small>Opportunities near Wilmington, NC</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle between List and Map View
+    const listBtn = document.getElementById('listBtn');
+    const mapBtn = document.getElementById('mapBtn');
+    const listView = document.getElementById('listView');
+    const mapView = document.getElementById('mapView');
+
+    listBtn.addEventListener('click', () => {
+      listBtn.classList.add('active');
+      mapBtn.classList.remove('active');
+      listView.classList.remove('hidden');
+      mapView.classList.add('hidden');
+    });
+
+    mapBtn.addEventListener('click', () => {
+      mapBtn.classList.add('active');
+      listBtn.classList.remove('active');
+      listView.classList.add('hidden');
+      mapView.classList.remove('hidden');
+    });
+  </script>
+
+</body>
+</html>
